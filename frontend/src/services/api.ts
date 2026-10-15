@@ -9,8 +9,9 @@ import type {
   PredictionResponse,
 } from '../types';
 
-// Read API URL from environment variable or fallback to localhost R Plumber default
-export const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://127.0.0.1:8000';
+// Read API URL from environment variable or fallback to public tunnel / local default
+export const API_BASE_URL =
+  import.meta.env.VITE_API_URL || 'https://don-thirty-quick-appointed.trycloudflare.com';
 
 class ApiService {
   private baseUrl: string;
