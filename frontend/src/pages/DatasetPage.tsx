@@ -19,6 +19,7 @@ import {
 } from 'lucide-react';
 import { api } from '../services/api';
 import { PatientRecord, PaginationInfo, DatasetSummary } from '../types';
+import { toNumber, toFixed } from '../utils/formatters';
 
 interface DatasetPageProps {
   isOnline: boolean;

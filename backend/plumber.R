@@ -45,6 +45,7 @@ function(req, res) {
 }
 
 #* Check backend API availability and status
+#* @serializer unboxedJSON
 #* @get /health
 function() {
   list(
@@ -58,6 +59,7 @@ function() {
 }
 
 #* Get overall dataset summary statistics
+#* @serializer unboxedJSON
 #* @get /summary
 function(res) {
   tryCatch({
@@ -69,6 +71,7 @@ function(res) {
 }
 
 #* Get paginated patient records with search, filter, and sorting
+#* @serializer unboxedJSON
 #* @param page:int Page number (1-based, default 1)
 #* @param limit:int Records per page (default 15)
 #* @param search:str Search term across ID, Age, Glucose, BMI
@@ -93,6 +96,7 @@ function(page = 1, limit = 15, search = "", outcome = "all", sort_by = "PatientI
 }
 
 #* Get precomputed chart summaries for interactive visualization
+#* @serializer unboxedJSON
 #* @get /charts
 function(res) {
   tryCatch({
@@ -104,24 +108,20 @@ function(res) {
 }
 
 #* Get genuine model evaluation metrics and confusion matrix
+#* @serializer contentType list(type="application/json; charset=utf-8")
 #* @get /metrics
 function(res) {
   metrics_file <- file.path(base_dir, "models", "model_metrics.json")
   if (!file.exists(metrics_file)) {
     res$status <- 404
-    return(list(error = "Model metrics file not found. Train the model first."))
+    return('{"error": "Model metrics file not found. Train the model first."}')
   }
   
-  tryCatch({
-    json_txt <- paste(readLines(metrics_file, warn = FALSE), collapse = "\n")
-    jsonlite::fromJSON(json_txt, simplifyVector = FALSE)
-  }, error = function(e) {
-    res$status <- 500
-    list(error = paste("Failed to parse metrics:", e$message))
-  })
+  paste(readLines(metrics_file, warn = FALSE), collapse = "\n")
 }
 
 #* Predict diabetes risk from patient health indicators using R GLM model
+#* @serializer unboxedJSON
 #* @post /predict
 function(req, res) {
   body <- tryCatch({
@@ -176,9 +176,9 @@ function(res) {
 }
 
 #* Upload and validate a new dataset (.xlsx or .csv)
+#* @serializer unboxedJSON
 #* @post /upload
 function(req, res) {
-  # Safe schema validation
   multipart <- mime::parse_multipart(req)
   
   if (is.null(multipart$file)) {
@@ -195,7 +195,6 @@ function(req, res) {
     return(list(success = FALSE, error = "Invalid file type. Only .xlsx and .csv files are supported."))
   }
   
-  # Read uploaded file
   uploaded_df <- tryCatch({
     if (ext == "xlsx") {
       as.data.frame(readxl::read_excel(temp_upload_path))
@@ -211,7 +210,6 @@ function(req, res) {
     return(list(success = FALSE, error = "Could not parse uploaded dataset or file is empty."))
   }
   
-  # Validate schema
   req_cols <- c("Pregnancies", "Glucose", "BloodPressure", "SkinThickness",
                 "Insulin", "BMI", "DiabetesPedigreeFunction", "Age", "Outcome")
   missing <- setdiff(req_cols, names(uploaded_df))
@@ -223,7 +221,6 @@ function(req, res) {
     ))
   }
   
-  # Validate numeric types
   for (c in req_cols) {
     uploaded_df[[c]] <- suppressWarnings(as.numeric(uploaded_df[[c]]))
     if (all(is.na(uploaded_df[[c]]))) {
@@ -232,7 +229,6 @@ function(req, res) {
     }
   }
   
-  # Save to active dataset
   target_xlsx <- file.path(base_dir, "data", "diabetes.xlsx")
   target_csv  <- file.path(base_dir, "data", "diabetes.csv")
   

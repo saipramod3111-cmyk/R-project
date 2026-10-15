@@ -25,6 +25,7 @@ import {
 } from 'recharts';
 import { api } from '../services/api';
 import { ModelMetricsResponse } from '../types';
+import { toNumber, toFixed } from '../utils/formatters';
 
 interface ModelPerformanceProps {
   isOnline: boolean;
@@ -144,7 +145,7 @@ export const ModelPerformance: React.FC<ModelPerformanceProps> = ({ isOnline }) 
             Test Accuracy
           </span>
           <div className="text-2xl font-black text-medblue-300 mt-1">
-            {(m.accuracy * 100).toFixed(1)}%
+            {toFixed(toNumber(m.accuracy) * 100, 1)}%
           </div>
           <span className="text-[10px] text-slate-500 mt-0.5 block">Held-out test set</span>
         </div>
@@ -155,7 +156,7 @@ export const ModelPerformance: React.FC<ModelPerformanceProps> = ({ isOnline }) 
             ROC-AUC
           </span>
           <div className="text-2xl font-black text-medcyan-300 mt-1">
-            {m.roc_auc.toFixed(4)}
+            {toFixed(m.roc_auc, 4)}
           </div>
           <span className="text-[10px] text-slate-500 mt-0.5 block">Trapezoidal rule</span>
         </div>
@@ -166,7 +167,7 @@ export const ModelPerformance: React.FC<ModelPerformanceProps> = ({ isOnline }) 
             F1-Score
           </span>
           <div className="text-2xl font-black text-indigo-300 mt-1">
-            {m.f1_score.toFixed(4)}
+            {toFixed(m.f1_score, 4)}
           </div>
           <span className="text-[10px] text-slate-500 mt-0.5 block">Harmonic mean</span>
         </div>
@@ -177,7 +178,7 @@ export const ModelPerformance: React.FC<ModelPerformanceProps> = ({ isOnline }) 
             Sensitivity / Recall
           </span>
           <div className="text-2xl font-black text-rose-300 mt-1">
-            {(m.sensitivity * 100).toFixed(1)}%
+            {toFixed(toNumber(m.sensitivity) * 100, 1)}%
           </div>
           <span className="text-[10px] text-slate-500 mt-0.5 block">TP / (TP + FN)</span>
         </div>
@@ -188,7 +189,7 @@ export const ModelPerformance: React.FC<ModelPerformanceProps> = ({ isOnline }) 
             Specificity
           </span>
           <div className="text-2xl font-black text-emerald-300 mt-1">
-            {(m.specificity * 100).toFixed(1)}%
+            {toFixed(toNumber(m.specificity) * 100, 1)}%
           </div>
           <span className="text-[10px] text-slate-500 mt-0.5 block">TN / (TN + FP)</span>
         </div>
@@ -199,7 +200,7 @@ export const ModelPerformance: React.FC<ModelPerformanceProps> = ({ isOnline }) 
             Precision
           </span>
           <div className="text-2xl font-black text-amber-300 mt-1">
-            {(m.precision * 100).toFixed(1)}%
+            {toFixed(toNumber(m.precision) * 100, 1)}%
           </div>
           <span className="text-[10px] text-slate-500 mt-0.5 block">TP / (TP + FP)</span>
         </div>
@@ -311,7 +312,7 @@ export const ModelPerformance: React.FC<ModelPerformanceProps> = ({ isOnline }) 
           </div>
 
           <p className="text-xs text-slate-400">
-            An AUC of <strong className="text-medcyan-300">{m.roc_auc.toFixed(4)}</strong> indicates
+            An AUC of <strong className="text-medcyan-300">{toFixed(m.roc_auc, 4)}</strong> indicates
             strong discriminative ability (well above 0.50 random classifier), signifying that a randomly
             selected diabetic individual has an ~82% probability of receiving a higher predicted risk score
             than a randomly chosen non-diabetic individual.
@@ -348,13 +349,13 @@ export const ModelPerformance: React.FC<ModelPerformanceProps> = ({ isOnline }) 
               {metrics.coefficients.map((c) => (
                 <tr key={c.variable} className="hover:bg-navy-800/30">
                   <td className="p-3 font-semibold text-white font-sans">{c.variable}</td>
-                  <td className="p-3">{c.estimate.toFixed(4)}</td>
-                  <td className="p-3 text-slate-400">{c.std_error.toFixed(4)}</td>
-                  <td className="p-3">{c.z_value.toFixed(4)}</td>
+                  <td className="p-3">{toFixed(c.estimate, 4)}</td>
+                  <td className="p-3 text-slate-400">{toFixed(c.std_error, 4)}</td>
+                  <td className="p-3">{toFixed(c.z_value, 4)}</td>
                   <td className={`p-3 font-bold ${c.significant ? 'text-medcyan-400' : 'text-slate-500'}`}>
-                    {c.p_value < 0.0001 ? '< 0.0001' : c.p_value.toFixed(4)}
+                    {toNumber(c.p_value) < 0.0001 ? '< 0.0001' : toFixed(c.p_value, 4)}
                   </td>
-                  <td className="p-3 font-bold text-medblue-300">{c.odds_ratio.toFixed(3)}</td>
+                  <td className="p-3 font-bold text-medblue-300">{toFixed(c.odds_ratio, 3)}</td>
                   <td className="p-3 text-right font-sans">
                     {c.significant ? (
                       <span className="px-2 py-0.5 rounded-full bg-emerald-500/10 text-emerald-300 border border-emerald-500/20 text-[10px] font-bold">

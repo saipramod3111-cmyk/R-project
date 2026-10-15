@@ -16,6 +16,7 @@ import {
 } from 'lucide-react';
 import { api } from '../services/api';
 import { DatasetSummary, ModelMetricsResponse } from '../types';
+import { toNumber, toFixed } from '../utils/formatters';
 
 interface HomeProps {
   onNavigate: (tab: string) => void;
@@ -200,10 +201,12 @@ export const Home: React.FC<HomeProps> = ({ onNavigate, isOnline }) => {
                 <BrainCircuit className="w-4 h-4 text-medblue-400" />
               </div>
               <div className="text-2xl font-bold text-medblue-300 tracking-tight">
-                {metrics ? `${(metrics.metrics.accuracy * 100).toFixed(1)}%` : '76.6%'}
+                {metrics?.metrics?.accuracy != null
+                  ? `${toFixed(toNumber(metrics.metrics.accuracy) * 100, 1)}%`
+                  : '76.6%'}
               </div>
               <p className="text-xs text-slate-400 mt-1">
-                Held-out test set (n={metrics?.test_samples || 154})
+                Held-out test set (n={toNumber(metrics?.test_samples, 154)})
               </p>
             </div>
 
@@ -216,7 +219,9 @@ export const Home: React.FC<HomeProps> = ({ onNavigate, isOnline }) => {
                 <TrendingUp className="w-4 h-4 text-medcyan-400" />
               </div>
               <div className="text-2xl font-bold text-medcyan-300 tracking-tight">
-                {metrics ? metrics.metrics.roc_auc.toFixed(4) : '0.8185'}
+                {metrics?.metrics?.roc_auc != null
+                  ? toFixed(metrics.metrics.roc_auc, 4)
+                  : '0.8185'}
               </div>
               <p className="text-xs text-slate-400 mt-1">
                 Trapezoidal test evaluation

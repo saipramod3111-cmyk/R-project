@@ -16,6 +16,7 @@ import {
 } from 'lucide-react';
 import { api } from '../services/api';
 import { PredictionRequest, PredictionResponse } from '../types';
+import { toNumber, toFixed } from '../utils/formatters';
 
 interface PredictionProps {
   isOnline: boolean;
@@ -432,7 +433,7 @@ export const Prediction: React.FC<PredictionProps> = ({ isOnline }) => {
                   Decision Cutoff Threshold:
                 </span>
                 <span className="font-mono font-bold text-medblue-400 bg-navy-950 px-2 py-0.5 rounded border border-navy-800">
-                  {threshold.toFixed(2)} ({Math.round(threshold * 100)}%)
+                  {toFixed(threshold, 2)} ({Math.round(toNumber(threshold) * 100)}%)
                 </span>
               </div>
               <input
@@ -519,25 +520,25 @@ export const Prediction: React.FC<PredictionProps> = ({ isOnline }) => {
                 <div className="flex justify-between items-baseline">
                   <span className="text-xs font-medium text-slate-300">Estimated Probability</span>
                   <span className="text-3xl font-extrabold text-white tracking-tight">
-                    {result.predicted_percentage}%
+                    {toFixed(result.predicted_percentage, 1)}%
                   </span>
                 </div>
 
                 <div className="w-full bg-navy-950 rounded-full h-3.5 p-0.5 border border-navy-800">
                   <div
                     className={`h-full rounded-full transition-all duration-700 ${
-                      result.predicted_probability >= threshold
+                      toNumber(result.predicted_probability) >= toNumber(threshold)
                         ? 'bg-gradient-to-r from-amber-500 to-rose-500'
                         : 'bg-gradient-to-r from-emerald-500 to-medcyan-400'
                     }`}
-                    style={{ width: `${Math.min(100, Math.max(5, result.predicted_percentage))}%` }}
+                    style={{ width: `${Math.min(100, Math.max(5, toNumber(result.predicted_percentage)))}%` }}
                   />
                 </div>
 
                 <div className="flex justify-between text-[10px] text-slate-500">
                   <span>0% (Lowest Risk)</span>
                   <span className="text-medblue-400 font-semibold">
-                    Cutoff: {Math.round(result.classification_threshold * 100)}%
+                    Cutoff: {Math.round(toNumber(result.classification_threshold) * 100)}%
                   </span>
                   <span>100% (Highest Risk)</span>
                 </div>
