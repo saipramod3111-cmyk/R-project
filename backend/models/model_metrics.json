@@ -1,0 +1,631 @@
+{
+  "model_type": "Logistic Regression (Binary Binomial GLM)",
+  "formula": "Outcome ~ Pregnancies + Glucose + BloodPressure + SkinThickness + Insulin + BMI + DiabetesPedigreeFunction + Age",
+  "seed": 42,
+  "train_split": 0.8,
+  "train_samples": 614,
+  "test_samples": 154,
+  "classification_threshold": 0.5,
+  "metrics": {
+    "accuracy": 0.7662,
+    "precision": 0.7209,
+    "recall": 0.5636,
+    "sensitivity": 0.5636,
+    "specificity": 0.8788,
+    "f1_score": 0.6327,
+    "roc_auc": 0.8185
+  },
+  "confusion_matrix": {
+    "true_positive": 31,
+    "true_negative": 87,
+    "false_positive": 12,
+    "false_negative": 24,
+    "total": 154
+  },
+  "roc_curve": [
+    {
+      "threshold": 0,
+      "fpr": 1,
+      "tpr": 1
+    },
+    {
+      "threshold": 0.01,
+      "fpr": 1,
+      "tpr": 1
+    },
+    {
+      "threshold": 0.02,
+      "fpr": 0.9596,
+      "tpr": 1
+    },
+    {
+      "threshold": 0.03,
+      "fpr": 0.9192,
+      "tpr": 1
+    },
+    {
+      "threshold": 0.04,
+      "fpr": 0.8788,
+      "tpr": 1
+    },
+    {
+      "threshold": 0.05,
+      "fpr": 0.8586,
+      "tpr": 1
+    },
+    {
+      "threshold": 0.06,
+      "fpr": 0.8586,
+      "tpr": 1
+    },
+    {
+      "threshold": 0.07,
+      "fpr": 0.8182,
+      "tpr": 1
+    },
+    {
+      "threshold": 0.08,
+      "fpr": 0.7879,
+      "tpr": 1
+    },
+    {
+      "threshold": 0.09,
+      "fpr": 0.7475,
+      "tpr": 1
+    },
+    {
+      "threshold": 0.1,
+      "fpr": 0.7172,
+      "tpr": 1
+    },
+    {
+      "threshold": 0.11,
+      "fpr": 0.6667,
+      "tpr": 1
+    },
+    {
+      "threshold": 0.12,
+      "fpr": 0.6667,
+      "tpr": 0.9818
+    },
+    {
+      "threshold": 0.13,
+      "fpr": 0.6263,
+      "tpr": 0.9636
+    },
+    {
+      "threshold": 0.14,
+      "fpr": 0.5859,
+      "tpr": 0.9455
+    },
+    {
+      "threshold": 0.15,
+      "fpr": 0.5455,
+      "tpr": 0.9455
+    },
+    {
+      "threshold": 0.16,
+      "fpr": 0.5051,
+      "tpr": 0.8727
+    },
+    {
+      "threshold": 0.17,
+      "fpr": 0.5051,
+      "tpr": 0.8727
+    },
+    {
+      "threshold": 0.18,
+      "fpr": 0.4747,
+      "tpr": 0.8727
+    },
+    {
+      "threshold": 0.19,
+      "fpr": 0.4747,
+      "tpr": 0.8364
+    },
+    {
+      "threshold": 0.2,
+      "fpr": 0.4545,
+      "tpr": 0.8182
+    },
+    {
+      "threshold": 0.21,
+      "fpr": 0.4444,
+      "tpr": 0.8
+    },
+    {
+      "threshold": 0.22,
+      "fpr": 0.4242,
+      "tpr": 0.8
+    },
+    {
+      "threshold": 0.23,
+      "fpr": 0.404,
+      "tpr": 0.8
+    },
+    {
+      "threshold": 0.24,
+      "fpr": 0.404,
+      "tpr": 0.8
+    },
+    {
+      "threshold": 0.25,
+      "fpr": 0.3939,
+      "tpr": 0.8
+    },
+    {
+      "threshold": 0.26,
+      "fpr": 0.3838,
+      "tpr": 0.8
+    },
+    {
+      "threshold": 0.27,
+      "fpr": 0.3636,
+      "tpr": 0.7818
+    },
+    {
+      "threshold": 0.28,
+      "fpr": 0.3636,
+      "tpr": 0.7636
+    },
+    {
+      "threshold": 0.29,
+      "fpr": 0.3636,
+      "tpr": 0.7636
+    },
+    {
+      "threshold": 0.3,
+      "fpr": 0.3434,
+      "tpr": 0.7636
+    },
+    {
+      "threshold": 0.31,
+      "fpr": 0.3131,
+      "tpr": 0.7636
+    },
+    {
+      "threshold": 0.32,
+      "fpr": 0.2828,
+      "tpr": 0.7273
+    },
+    {
+      "threshold": 0.33,
+      "fpr": 0.2727,
+      "tpr": 0.7273
+    },
+    {
+      "threshold": 0.34,
+      "fpr": 0.2424,
+      "tpr": 0.7091
+    },
+    {
+      "threshold": 0.35,
+      "fpr": 0.2323,
+      "tpr": 0.6909
+    },
+    {
+      "threshold": 0.36,
+      "fpr": 0.2121,
+      "tpr": 0.6909
+    },
+    {
+      "threshold": 0.37,
+      "fpr": 0.202,
+      "tpr": 0.6909
+    },
+    {
+      "threshold": 0.38,
+      "fpr": 0.202,
+      "tpr": 0.6727
+    },
+    {
+      "threshold": 0.39,
+      "fpr": 0.1818,
+      "tpr": 0.6545
+    },
+    {
+      "threshold": 0.4,
+      "fpr": 0.1717,
+      "tpr": 0.6545
+    },
+    {
+      "threshold": 0.41,
+      "fpr": 0.1717,
+      "tpr": 0.6182
+    },
+    {
+      "threshold": 0.42,
+      "fpr": 0.1717,
+      "tpr": 0.6182
+    },
+    {
+      "threshold": 0.43,
+      "fpr": 0.1616,
+      "tpr": 0.6
+    },
+    {
+      "threshold": 0.44,
+      "fpr": 0.1313,
+      "tpr": 0.5818
+    },
+    {
+      "threshold": 0.45,
+      "fpr": 0.1313,
+      "tpr": 0.5818
+    },
+    {
+      "threshold": 0.46,
+      "fpr": 0.1212,
+      "tpr": 0.5636
+    },
+    {
+      "threshold": 0.47,
+      "fpr": 0.1212,
+      "tpr": 0.5636
+    },
+    {
+      "threshold": 0.48,
+      "fpr": 0.1212,
+      "tpr": 0.5636
+    },
+    {
+      "threshold": 0.49,
+      "fpr": 0.1212,
+      "tpr": 0.5636
+    },
+    {
+      "threshold": 0.5,
+      "fpr": 0.1212,
+      "tpr": 0.5636
+    },
+    {
+      "threshold": 0.51,
+      "fpr": 0.1212,
+      "tpr": 0.5636
+    },
+    {
+      "threshold": 0.52,
+      "fpr": 0.1111,
+      "tpr": 0.5636
+    },
+    {
+      "threshold": 0.53,
+      "fpr": 0.1111,
+      "tpr": 0.5455
+    },
+    {
+      "threshold": 0.54,
+      "fpr": 0.1111,
+      "tpr": 0.5273
+    },
+    {
+      "threshold": 0.55,
+      "fpr": 0.1111,
+      "tpr": 0.5273
+    },
+    {
+      "threshold": 0.56,
+      "fpr": 0.1111,
+      "tpr": 0.5273
+    },
+    {
+      "threshold": 0.57,
+      "fpr": 0.1111,
+      "tpr": 0.5273
+    },
+    {
+      "threshold": 0.58,
+      "fpr": 0.101,
+      "tpr": 0.5273
+    },
+    {
+      "threshold": 0.59,
+      "fpr": 0.101,
+      "tpr": 0.5273
+    },
+    {
+      "threshold": 0.6,
+      "fpr": 0.101,
+      "tpr": 0.5273
+    },
+    {
+      "threshold": 0.61,
+      "fpr": 0.0909,
+      "tpr": 0.5273
+    },
+    {
+      "threshold": 0.62,
+      "fpr": 0.0909,
+      "tpr": 0.5273
+    },
+    {
+      "threshold": 0.63,
+      "fpr": 0.0909,
+      "tpr": 0.5273
+    },
+    {
+      "threshold": 0.64,
+      "fpr": 0.0909,
+      "tpr": 0.5273
+    },
+    {
+      "threshold": 0.65,
+      "fpr": 0.0909,
+      "tpr": 0.5273
+    },
+    {
+      "threshold": 0.66,
+      "fpr": 0.0909,
+      "tpr": 0.5091
+    },
+    {
+      "threshold": 0.67,
+      "fpr": 0.0909,
+      "tpr": 0.5091
+    },
+    {
+      "threshold": 0.68,
+      "fpr": 0.0808,
+      "tpr": 0.5091
+    },
+    {
+      "threshold": 0.69,
+      "fpr": 0.0808,
+      "tpr": 0.4909
+    },
+    {
+      "threshold": 0.7,
+      "fpr": 0.0808,
+      "tpr": 0.4727
+    },
+    {
+      "threshold": 0.71,
+      "fpr": 0.0808,
+      "tpr": 0.4727
+    },
+    {
+      "threshold": 0.72,
+      "fpr": 0.0707,
+      "tpr": 0.4545
+    },
+    {
+      "threshold": 0.73,
+      "fpr": 0.0606,
+      "tpr": 0.4182
+    },
+    {
+      "threshold": 0.74,
+      "fpr": 0.0606,
+      "tpr": 0.4
+    },
+    {
+      "threshold": 0.75,
+      "fpr": 0.0505,
+      "tpr": 0.4
+    },
+    {
+      "threshold": 0.76,
+      "fpr": 0.0505,
+      "tpr": 0.3636
+    },
+    {
+      "threshold": 0.77,
+      "fpr": 0.0404,
+      "tpr": 0.3455
+    },
+    {
+      "threshold": 0.78,
+      "fpr": 0.0404,
+      "tpr": 0.3455
+    },
+    {
+      "threshold": 0.79,
+      "fpr": 0.0404,
+      "tpr": 0.3273
+    },
+    {
+      "threshold": 0.8,
+      "fpr": 0.0303,
+      "tpr": 0.3273
+    },
+    {
+      "threshold": 0.81,
+      "fpr": 0.0101,
+      "tpr": 0.3273
+    },
+    {
+      "threshold": 0.82,
+      "fpr": 0.0101,
+      "tpr": 0.3091
+    },
+    {
+      "threshold": 0.83,
+      "fpr": 0.0101,
+      "tpr": 0.2909
+    },
+    {
+      "threshold": 0.84,
+      "fpr": 0.0101,
+      "tpr": 0.2727
+    },
+    {
+      "threshold": 0.85,
+      "fpr": 0.0101,
+      "tpr": 0.2727
+    },
+    {
+      "threshold": 0.86,
+      "fpr": 0.0101,
+      "tpr": 0.2727
+    },
+    {
+      "threshold": 0.87,
+      "fpr": 0.0101,
+      "tpr": 0.2727
+    },
+    {
+      "threshold": 0.88,
+      "fpr": 0.0101,
+      "tpr": 0.2545
+    },
+    {
+      "threshold": 0.89,
+      "fpr": 0.0101,
+      "tpr": 0.2364
+    },
+    {
+      "threshold": 0.9,
+      "fpr": 0.0101,
+      "tpr": 0.2182
+    },
+    {
+      "threshold": 0.91,
+      "fpr": 0.0101,
+      "tpr": 0.2182
+    },
+    {
+      "threshold": 0.92,
+      "fpr": 0.0101,
+      "tpr": 0.1636
+    },
+    {
+      "threshold": 0.93,
+      "fpr": 0.0101,
+      "tpr": 0.1091
+    },
+    {
+      "threshold": 0.94,
+      "fpr": 0.0101,
+      "tpr": 0.0727
+    },
+    {
+      "threshold": 0.95,
+      "fpr": 0.0101,
+      "tpr": 0.0364
+    },
+    {
+      "threshold": 0.96,
+      "fpr": 0,
+      "tpr": 0.0182
+    },
+    {
+      "threshold": 0.97,
+      "fpr": 0,
+      "tpr": 0.0182
+    },
+    {
+      "threshold": 0.98,
+      "fpr": 0,
+      "tpr": 0.0182
+    },
+    {
+      "threshold": 0.99,
+      "fpr": 0,
+      "tpr": 0
+    },
+    {
+      "threshold": 1,
+      "fpr": 0,
+      "tpr": 0
+    }
+  ],
+  "coefficients": [
+    {
+      "variable": "(Intercept)",
+      "estimate": -9.4333,
+      "std_error": 0.9184,
+      "z_value": -10.2716,
+      "p_value": 0,
+      "odds_ratio": 0.0001,
+      "significant": true
+    },
+    {
+      "variable": "Pregnancies",
+      "estimate": 0.1458,
+      "std_error": 0.037,
+      "z_value": 3.9357,
+      "p_value": 0.0001,
+      "odds_ratio": 1.1569,
+      "significant": true
+    },
+    {
+      "variable": "Glucose",
+      "estimate": 0.0399,
+      "std_error": 0.0045,
+      "z_value": 8.7856,
+      "p_value": 0,
+      "odds_ratio": 1.0407,
+      "significant": true
+    },
+    {
+      "variable": "BloodPressure",
+      "estimate": -0.0064,
+      "std_error": 0.0094,
+      "z_value": -0.6778,
+      "p_value": 0.4979,
+      "odds_ratio": 0.9936,
+      "significant": false
+    },
+    {
+      "variable": "SkinThickness",
+      "estimate": 0.0136,
+      "std_error": 0.015,
+      "z_value": 0.9096,
+      "p_value": 0.363,
+      "odds_ratio": 1.0137,
+      "significant": false
+    },
+    {
+      "variable": "Insulin",
+      "estimate": -0.0017,
+      "std_error": 0.0013,
+      "z_value": -1.3007,
+      "p_value": 0.1934,
+      "odds_ratio": 0.9983,
+      "significant": false
+    },
+    {
+      "variable": "BMI",
+      "estimate": 0.0866,
+      "std_error": 0.0202,
+      "z_value": 4.2832,
+      "p_value": 0,
+      "odds_ratio": 1.0904,
+      "significant": true
+    },
+    {
+      "variable": "DiabetesPedigreeFunction",
+      "estimate": 0.7102,
+      "std_error": 0.3313,
+      "z_value": 2.1438,
+      "p_value": 0.032,
+      "odds_ratio": 2.0343,
+      "significant": true
+    },
+    {
+      "variable": "Age",
+      "estimate": 0.0095,
+      "std_error": 0.0108,
+      "z_value": 0.8767,
+      "p_value": 0.3807,
+      "odds_ratio": 1.0095,
+      "significant": false
+    }
+  ],
+  "diagnostics": {
+    "aic": 581.65,
+    "null_deviance": 792.69,
+    "residual_deviance": 563.65,
+    "df_null": 613,
+    "df_residual": 605
+  },
+  "imputation_medians": {
+    "Glucose": 117,
+    "BloodPressure": 72,
+    "SkinThickness": 29,
+    "Insulin": 125,
+    "BMI": 32.3
+  },
+  "trained_at": "2026-10-15 13:02:59 UTC",
+  "version": "1.0.0"
+}
