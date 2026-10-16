@@ -207,12 +207,12 @@ export const Header: React.FC<HeaderProps> = ({
                   type="text"
                   value={tempUrl}
                   onChange={(e) => setTempUrl(e.target.value)}
-                  placeholder="http://127.0.0.1:8000"
+                  placeholder="https://r-project-uup0.onrender.com"
                   className="w-full px-3.5 py-2.5 rounded-xl bg-navy-950 border border-navy-700 text-slate-100 text-sm focus:outline-none focus:border-medblue-500 transition-colors"
                 />
                 <p className="mt-1.5 text-xs text-slate-400 flex items-center gap-1">
                   <HelpCircle className="w-3.5 h-3.5" />
-                  Default local: <code className="text-medblue-400">http://127.0.0.1:8000</code>
+                  Cloud: <code className="text-medcyan-400">https://r-project-uup0.onrender.com</code> or Local: <code className="text-medblue-400">http://127.0.0.1:8000</code>
                 </p>
               </div>
 

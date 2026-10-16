@@ -3,7 +3,7 @@
 
 library(plumber)
 
-port <- as.numeric(Sys.getenv("PORT", "8000"))
+port <- as.numeric(Sys.getenv("PORT", "10000"))
 host <- Sys.getenv("HOST", "0.0.0.0")
 
 cat("====================================================\n")

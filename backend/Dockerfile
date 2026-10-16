@@ -26,11 +26,11 @@ RUN Rscript prepare_data.R || true
 RUN Rscript train_model.R || true
 
 # Set environment variables
-ENV PORT=8000
+ENV PORT=10000
 ENV HOST=0.0.0.0
 
 # Expose port
-EXPOSE 8000
+EXPOSE 10000
 
 # Start Plumber server
 CMD ["Rscript", "app.R"]

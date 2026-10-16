@@ -11,7 +11,7 @@ import type {
 
 // Read API URL from environment variable or fallback to public tunnel / local default
 export const API_BASE_URL =
-  import.meta.env.VITE_API_URL || 'https://don-thirty-quick-appointed.trycloudflare.com';
+  import.meta.env.VITE_API_URL || 'https://r-project-uup0.onrender.com';
 
 class ApiService {
   private baseUrl: string;

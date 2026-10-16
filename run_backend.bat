@@ -41,6 +41,7 @@ echo NOTE: Keep this window OPEN while running DiaPredict.
 echo ========================================================
 echo.
 
+set "PORT=8000"
 Rscript app.R
 
 echo.
