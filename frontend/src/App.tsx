@@ -15,7 +15,24 @@ export const App: React.FC = () => {
   const [activeTab, setActiveTab] = useState<string>('dashboard');
   const [isOnline, setIsOnline] = useState<boolean>(true);
   const [isChecking, setIsChecking] = useState<boolean>(false);
-  const [apiUrl, setApiUrl] = useState<string>(api.getBaseUrl());
+  const [apiUrl, setApiUrl] = useState<string>(() => {
+    if (typeof window !== 'undefined') {
+      const urlParams = new URLSearchParams(window.location.search);
+      const queryApi = urlParams.get('api');
+      if (queryApi && queryApi.startsWith('http')) {
+        const clean = queryApi.trim().replace(/\/$/, '');
+        localStorage.setItem('diapredict_api_url', clean);
+        api.setBaseUrl(clean);
+        return clean;
+      }
+      const saved = localStorage.getItem('diapredict_api_url');
+      if (saved && saved.startsWith('http')) {
+        api.setBaseUrl(saved);
+        return saved;
+      }
+    }
+    return api.getBaseUrl();
+  });
 
   const checkBackendHealth = useCallback(async () => {
     setIsChecking(true);
@@ -37,8 +54,12 @@ export const App: React.FC = () => {
   }, [checkBackendHealth]);
 
   const handleUpdateApiUrl = (newUrl: string) => {
-    api.setBaseUrl(newUrl);
-    setApiUrl(newUrl);
+    const cleanUrl = newUrl.trim().replace(/\/$/, '');
+    if (typeof window !== 'undefined') {
+      localStorage.setItem('diapredict_api_url', cleanUrl);
+    }
+    api.setBaseUrl(cleanUrl);
+    setApiUrl(cleanUrl);
     checkBackendHealth();
   };
 

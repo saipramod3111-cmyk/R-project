@@ -199,22 +199,52 @@ export const Header: React.FC<HeaderProps> = ({
             </div>
 
             <form onSubmit={handleSaveUrl} className="space-y-4">
-              <div>
-                <label className="block text-xs font-medium text-slate-300 mb-1.5">
-                  R API Base URL
-                </label>
+                <div className="flex items-center justify-between mb-1.5">
+                  <label className="block text-xs font-medium text-slate-300">
+                    R API Base URL
+                  </label>
+                  <button
+                    type="button"
+                    onClick={async () => {
+                      try {
+                        const clip = await navigator.clipboard.readText();
+                        if (clip && clip.startsWith('http')) {
+                          setTempUrl(clip.trim().replace(/\/$/, ''));
+                        }
+                      } catch {
+                        // ignore clipboard permission error
+                      }
+                    }}
+                    className="text-[11px] text-medcyan-400 hover:text-medcyan-300 underline underline-offset-2 transition-colors"
+                  >
+                    Paste from Clipboard
+                  </button>
+                </div>
                 <input
                   type="text"
                   value={tempUrl}
                   onChange={(e) => setTempUrl(e.target.value)}
-                  placeholder="https://r-project-uup0.onrender.com"
-                  className="w-full px-3.5 py-2.5 rounded-xl bg-navy-950 border border-navy-700 text-slate-100 text-sm focus:outline-none focus:border-medblue-500 transition-colors"
+                  placeholder="https://xxxx.trycloudflare.com or http://127.0.0.1:8000"
+                  className="w-full px-3.5 py-2.5 rounded-xl bg-navy-950 border border-navy-700 text-slate-100 text-sm focus:outline-none focus:border-medblue-500 transition-colors font-mono"
                 />
-                <p className="mt-1.5 text-xs text-slate-400 flex items-center gap-1">
-                  <HelpCircle className="w-3.5 h-3.5" />
-                  Cloud: <code className="text-medcyan-400">https://r-project-uup0.onrender.com</code> or Local: <code className="text-medblue-400">http://127.0.0.1:8000</code>
-                </p>
-              </div>
+                
+                {/* Quick Presets */}
+                <div className="flex flex-wrap gap-2 mt-2">
+                  <button
+                    type="button"
+                    onClick={() => setTempUrl('http://127.0.0.1:8000')}
+                    className="px-2.5 py-1 rounded-lg bg-navy-800/80 hover:bg-navy-800 border border-navy-700 text-[11px] text-slate-300 transition-colors"
+                  >
+                    Local (127.0.0.1:8000)
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => setTempUrl('https://r-project-uup0.onrender.com')}
+                    className="px-2.5 py-1 rounded-lg bg-navy-800/80 hover:bg-navy-800 border border-navy-700 text-[11px] text-slate-300 transition-colors"
+                  >
+                    Render Cloud
+                  </button>
+                </div>
 
               <div className="p-3 rounded-xl bg-navy-950/60 border border-navy-800 text-xs text-slate-400 space-y-1">
                 <p className="font-semibold text-slate-300">How to start R Plumber backend locally:</p>
