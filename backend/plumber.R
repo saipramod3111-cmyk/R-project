@@ -44,6 +44,17 @@ function(req, res) {
   }
 }
 
+#* Root endpoint for cloud health checks and status probes
+#* @serializer unboxedJSON
+#* @get /
+function() {
+  list(
+    status = "healthy",
+    service = "DiaPredict R Plumber API",
+    message = "DiaPredict R backend is running and ready for predictions."
+  )
+}
+
 #* Check backend API availability and status
 #* @serializer unboxedJSON
 #* @get /health
